@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: spring-boot-configmaps-demo
+  cloud:
+    kubernetes:
+      reload:
+        enabled: true
+
+server:
+  port: 8080
+

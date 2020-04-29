@@ -1,2 +1,1 @@
-# kubernete-estudos
-estudos kubernetes
+# kubernetes-estudos

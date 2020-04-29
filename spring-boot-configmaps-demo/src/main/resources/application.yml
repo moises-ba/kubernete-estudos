@@ -1,0 +1,16 @@
+#spring.cloud.kubernetes.reload.enabled=true
+
+#greeter.message=%s %s! Spring Boot application.properties has been mounted as volume on Kubernetes!
+
+
+
+
+
+greeter:
+  message: "property em formato yaml"
+  message2: "teste de mensagem fora do configmap"
+
+external-api:
+  ms-product:
+    url: http://ms-product/
+

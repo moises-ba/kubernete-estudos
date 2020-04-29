@@ -1,0 +1,58 @@
+#necessario executar o scpript(spring-permission-read-configmap.yaml) kubectl para permitir ler do configmap para q o springboot_kubernetes_config tenha acesso ao configmap, sem isso pegamos o erro forbidden(403)
+
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: spring-boot-configmaps-demo
+  labels:
+    app: spring-boot-configmaps-demo
+spec:
+  selector:
+    matchLabels:
+      app: spring-boot-configmaps-demo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: spring-boot-configmaps-demo
+    spec:
+      containers:
+        - name: spring-boot-configmaps-demo
+          image: moisesba/spring-boot-configmaps-demo:0.0.1
+          volumeMounts:
+          - name: application-config 
+            mountPath: "/deployments/config" 
+            readOnly: true
+          ports:
+          - containerPort: 8080  
+
+      volumes:
+      - name: application-config
+        configMap:
+          name: spring-boot-configmaps-demo
+          items:
+          - key: application.yml
+            path: application.yml
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-boot-configmaps-demo
+  labels:
+    app: spring-boot-configmaps-demo
+spec:
+  ports:
+  -  port: 80
+     targetPort: 8080
+#  - nodePort: 30001
+#    port: 8080
+   
+  type: NodePort
+  selector:
+    app: spring-boot-configmaps-demo        
+
+
+#criar configmap 
+#kubectl create configmap spring-boot-configmaps-demo --from-file=src/main/resources/application.yml

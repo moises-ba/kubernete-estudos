@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: ms-product
+  cloud:
+    kubernetes:
+      reload:
+        enabled: true
+
+server:
+  port: 8080
+
