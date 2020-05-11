@@ -20,31 +20,6 @@ data:
     - name: default
       protocol: layer2
       addresses:      
-      - 192.168.99.110-192.168.99.120
-
----      
-#aplicar o plugin(ingress-nginx) caso nao exista 
-#kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.31.1/deploy/static/provider/cloud/deploy.yaml
-
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: ingress-springboot
-  annotations:
-    # use the shared ingress-nginx
-    #kubernetes.io/ingress.class: "nginx"
-    #kubernetes.io/ingress.name: "nginx"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-spec:
-  rules:
-  #- host: springboot.org
-   - http:
-      paths:
-      - path: /ms-product/(.+)
-        backend:
-          serviceName: ms-product
-          servicePort: 80
-      - path: /hello-service/(.+)
-        backend:
-          serviceName: spring-boot-configmaps-demo
-          servicePort: 80
+      - 35.232.143.67-35.232.143.67
+      - 35.223.53.123-35.223.53.123
+      - 35.239.214.48-35.239.214.48
