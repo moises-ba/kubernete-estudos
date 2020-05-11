@@ -291,7 +291,7 @@ spec:
             - --validating-webhook=:8443
             - --validating-webhook-certificate=/usr/local/certificates/cert
             - --validating-webhook-key=/usr/local/certificates/key
-            - --report-node-internal-ip-addres  
+            - --report-node-internal-ip-address  
           securityContext:
             capabilities:
               drop:
@@ -399,12 +399,10 @@ spec:
       port: 80
       protocol: TCP
       targetPort: http
-      nodePort: 30100
     - name: https
       port: 443
       protocol: TCP
       targetPort: https
-      nodePort: 30101
   selector:
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/instance: ingress-nginx
