@@ -15,13 +15,15 @@ execute('mvn clean package -DskipTests')
 
 image = 'moisesba/ms-product:0.0.1' 
 
-print('Setando o ambiente do docker pada o minikube...')
+#print('Setando o ambiente do docker pada o minikube...')
 #execute('eval $(minikube docker-env)')
 
 
-print('Gerando imagem...')
-execute('eval $(minikube docker-env) && docker image rm -f ' + image)
-execute('eval $(minikube docker-env) &&  docker build -t ' + image + ' . ')
+#print('Gerando imagem...')
+#execute('eval $(minikube docker-env) && docker image rm -f ' + image)
+#execute('eval $(minikube docker-env) &&  docker build -t ' + image + ' . ')
+execute('docker image rm -f ' + image)
+execute('docker build -t ' + image + ' . ')
 
 
 #print('Voltando o ambiente do docker pada o host local...')

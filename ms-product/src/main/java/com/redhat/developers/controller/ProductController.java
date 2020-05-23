@@ -1,5 +1,6 @@
 package com.redhat.developers.controller;
 
+import com.redhat.developers.config.AdjustmentSendConditionsProperties;
 import com.redhat.developers.model.domain.Product;
 import com.redhat.developers.model.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -21,8 +22,16 @@ public class ProductController {
     private ProductRepository productRepository;
 
 
+
+    @Autowired
+    private AdjustmentSendConditionsProperties adjustmentSendConditionsProperties;
+
+
     @GetMapping("/products")
     public ResponseEntity<List<Product>> products() throws Exception {
+
+        System.out.println(adjustmentSendConditionsProperties.mapStatusConditions());
+
         return ResponseEntity.ok(this.productRepository.findAll());
     }
 

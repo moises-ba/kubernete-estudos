@@ -11,6 +11,11 @@ public class KubernetesSpringBootDemosConfigMapsDemoApplicationTests {
 
 	@Test
 	public void contextLoads() {
+
+
+       // Utils.toPositive(Utils.murmur2(keyBytes)) % numPartitions;
+
+
 	}
 
 }

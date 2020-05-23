@@ -10,3 +10,17 @@ greeter:
   message: "property em formato yaml"
   message2: "teste de mensagem fora do configmap"
 
+
+
+adjustment-core:
+  resend-conditions:
+    status:
+    - '3':
+        reasons:
+         - '2'
+         - '1'
+         - '7'
+    - '8':
+        reasons:
+         - '4'
+         - '5'

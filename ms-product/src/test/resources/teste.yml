@@ -1,0 +1,15 @@
+
+
+adjustment-core:
+  resend-conditions:
+    status:
+    - '3':
+        reasons:
+        - '2'
+        - '1'
+        - '7'
+    - '8':
+        reasons:
+        - '4'
+        - '5'
+

@@ -10,7 +10,7 @@ spec:
   selector:
     matchLabels:
       app: ms-product
-  replicas: 1
+  replicas: 5
   template:
     metadata:
       labels:
@@ -19,20 +19,20 @@ spec:
       containers:
         - name: ms-product
           image: moisesba/ms-product:0.0.1
-          volumeMounts:
-          - name: application-config
-            mountPath: "/deployments/config"
-            readOnly: true
+        #  volumeMounts:
+        #  - name: application-config
+        #    mountPath: "/deployments/config"
+        #    readOnly: true
           ports:
           - containerPort: 8080
 
-      volumes:
-      - name: application-config
-        configMap:
-          name: ms-product
-          items:
-          - key: application.yml
-            path: application.yml
+#      volumes:
+#      - name: application-config
+#        configMap:
+#          name: ms-product
+#          items:
+#          - key: application.yml
+#            path: application.yml
 
 ---
 
@@ -43,15 +43,12 @@ metadata:
   labels:
     app: ms-product
 spec:
+  selector:
+    app: ms-product
   ports:
   -  port: 80
      targetPort: 8080
-#  - nodePort: 30001
-#    port: 8080
-   
-  type: NodePort
-  selector:
-    app: ms-product        
+  type: ClusterIP
 
 
 #criar configmap 
