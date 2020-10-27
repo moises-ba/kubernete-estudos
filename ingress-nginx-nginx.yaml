@@ -12,9 +12,12 @@ spec:
    # host: nginx-ingress-service-ip
    -  http:
        paths:
-       - path: /(.+)
+       #- path: /nginx #(.+)
+       #  backend:
+       #   serviceName: nginx
+       #   servicePort: 80
+       - path: /ms-product/(.+)
          backend:
-          serviceName: nginx
-          servicePort: 80
-      
+          serviceName: ms-product
+          servicePort: 80     
 
